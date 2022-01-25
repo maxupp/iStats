@@ -1,0 +1,20 @@
+series_short_hands = {
+    'mx5': 3472,
+    'bmw12': 3477,
+    'vee': 3473,
+    '488_fixed': 3479,
+    'skippy': 3486,
+    'tcr': 3478,
+    'f3_fixed': 3506,
+    'f3_open': 3505,
+    'vrs_endu': 3521,
+    'impc': 3488,
+    'pcup_open': 3510,
+    'pcup_fixed': 3511,
+    'radical': 3492,
+    'vrs_sprint': 3520,
+    'fanatec_gt3_fixed': 3519,
+    'lmp2': 3480,
+    'w12_open': 3529,
+    'w12_fixed': 3564
+}
