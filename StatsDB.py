@@ -27,15 +27,17 @@ class StatsDB:
 
             self.con.execute("""
                 CREATE TABLE IF NOT EXISTS team(
-                    team_id integer PRIMARY KEY AUTO_INCREMENT,
+                    team_id integer PRIMARY KEY AUTOINCREMENT,
                     team_name text
                 )            
             """)
 
             self.con.execute("""
                 CREATE TABLE IF NOT EXISTS many_driver_has_many_team(
-                    iracing_cust_id integer FOREIGN KEY,
-                    team_id integer FOREIGN KEY
+                    iracing_cust_id integer,
+                    team_id integer,
+                    FOREIGN KEY(iracing_cust_id) REFERENCES driver(iracing_cust_id),
+                    FOREIGN KEY(team_id) REFERENCES team(team_id)
                 )            
             """)
 

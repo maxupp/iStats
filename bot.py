@@ -1,3 +1,4 @@
+import os
 from StatsDB import StatsDB
 from IScraper import IScraper
 import discord
@@ -75,8 +76,6 @@ def participation_or_sof(message, p_or_s):
         else:
             return False, 'Invalid command, try "_sof lmp2"'
 
-    season_id = parts[1]
-
     success, response = resolve_shorthand(parts[1])
     if not success:
         return False, response
@@ -84,6 +83,9 @@ def participation_or_sof(message, p_or_s):
     season_id = response
 
     season_details = scraper.get_season_details(season_id)
+
+    # get car info for series
+
 
     # get series info to lookup name
     meta_info = scraper.get_series_meta()
@@ -113,6 +115,20 @@ def schedule(message):
 
 
 def bop(message):
+    parts = message.content.split(maxsplit=1)
+
+    if len(parts) != 2:
+        return False, 'Invalid command, try "_bop lmp2"'
+
+    season_id = parts[1]
+
+    success, response = resolve_shorthand(parts[1])
+    if not success:
+        return False, response
+
+    season_id = response
+
+    season_details = scraper.get_season_details(season_id)
     return ''
 
 
@@ -185,5 +201,5 @@ async def on_message(message):
 
         await message.channel.send(answer)
 
-client.run(TOKEN)
+client.run(os.environ['TOKEN'])
 

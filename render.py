@@ -34,6 +34,10 @@ def participation_or_sof(season_details, p_or_s, series_name):
     return temp_image_name
 
 
+def bop(message):
+    return ''
+
+
 def schedule(schedules):
     tracks = [x['track']['track_name'] + ' ' + x['track'].get('config_name', '') for x in schedules]
     ret = f'Schedule: {schedules[0]["season_name"]}\n'

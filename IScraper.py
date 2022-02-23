@@ -63,4 +63,16 @@ class IScraper:
 
         return response
 
+    def get_car_details(self):
+        url = f'https://members-ng.iracing.com/data/car/get'
+        response = self.request_wrapper(self.session.get, {'url': url})
+
+        return response
+
+    def get_carclass_details(self):
+        url = f'https://members-ng.iracing.com/data/carclass/get'
+        response = self.request_wrapper(self.session.get, {'url': url})
+
+        return response
+
 

@@ -1,0 +1,7 @@
+__pycache__/
+.idea/
+.ipynb_checkpoints
+*.pickle
+*.db
+playground.__pycache__
+temp.png

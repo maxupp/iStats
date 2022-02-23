@@ -6,9 +6,6 @@ import pickle
 import time
 from render import render_last_race
 
-os.environ['ir_user'] = 'max.uppenkamp@rwth-aachen.de'
-os.environ['ir_password'] = 'LjNF(;Al9zO|%5-EZ=y.'
-
 
 def scrape_all():
     # main
@@ -51,5 +48,23 @@ def render_test():
 
 if __name__ == "__main__":
     scraper = IScraper()
-    rr = scraper.get_series_meta()
-    print(rr)
+    season_details = scraper.get_season_details(3478)
+    race_week = None
+
+    if race_week is None:
+        # get highest raceweek
+        race_week = max([x['race_week_num'] for x in season_details['results_list']])
+    else:
+        # correct index
+        race_week = race_week - 1
+
+    # get subsession ids for correct week
+    subsession_ids = [x["subsession_id"] for x in season_details['results_list'] if x["race_week_num"] == race_week]
+
+    car = scraper.get_car_details()
+    carclass = scraper.get_carclass_details()
+
+    # get results for subsessions
+    for sid in subsession_ids:
+        ss_info = scraper.get_subsession_details(sid)
+        print()
